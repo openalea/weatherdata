@@ -9,7 +9,8 @@
 
 
 from unicodedata import name
-import pandas 
+import pandas
+import datetime
 import xarray as xr
 import numpy as np
 import os
@@ -19,7 +20,8 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfea
 
-from agroservices import IPM
+from agroservices.ipm.ipm import IPM
+import agroservices.ipm.fakers as fakers
 
 from weatherdata.settings import pathCache
 
@@ -267,16 +269,8 @@ class WeatherDataSource:
 
         times = pandas.date_range(timeStart, timeEnd, freq=str(interval) + 's', tz=timeZone)
         # time transformation for query format
-        timeStart = times[0].strftime('%Y-%m-%dT%H:%M:%S')
-        timeEnd = times[-1].strftime('%Y-%m-%dT%H:%M:%S')
-        if times.tz._tzname == 'UTC':
-            timeStart += 'Z'
-            timeEnd += 'Z'
-        else:
-            decstr = times[0].strftime('%z')
-            decstr = decstr[:-2] + ':' + decstr[-2:]
-            timeStart += decstr
-            timeEnd += decstr
+        timeStart = datetime.datetime.isoformat(times[0])
+        timeEnd = datetime.datetime.isoformat(times[-1])
         interval = pandas.Timedelta(times.freq).seconds
 
         param_list = []
@@ -284,10 +278,10 @@ class WeatherDataSource:
 
         if self.forecast== False:
             for station in stationId:
-                params = self.ipm.weatheradapter_params(self.__source__,
-                                                        weatherStationId=station,
-                                                        timeStart=timeStart,
-                                                        timeEnd=timeEnd,
+                params = fakers.weather_adapter_params(self.__source__,
+                                                        station_id=station,
+                                                        time_start=timeStart,
+                                                        time_end=timeEnd,
                                                         interval=interval,
                                                         parameters=parameters)
                 path=os.path.join(pathCache(),str(station)+'_'+str(parameters)+"_"+timeStart.split("T")[0]+"_"+timeEnd.split("T")[0]+'.json')
@@ -299,12 +293,11 @@ class WeatherDataSource:
             for el in range(len(latitude)):
                 path = os.path.join(pathCache(),
                                     str(altitude[el]) + '_' + str(latitude[el]) + "_" + str(longitude[el]) + '.json')
-                params = self.ipm.weatheradapter_params(self.__source__,
-                                                        altitude=altitude[el],
+                params = fakers.weather_adapter_params(self.__source__,
                                                         latitude=latitude[el],
                                                         longitude=longitude[el],
-                                                        timeStart=timeStart,
-                                                        timeEnd=timeEnd,
+                                                        time_start=timeStart,
+                                                        time_end=timeEnd,
                                                         interval=interval,
                                                         parameters=parameters)
                 param_list.append(params)
