@@ -197,7 +197,7 @@ class WeatherDataHub:
         return data    
             
 
-class WeatherDataSource:
+class WeatherDataSource(object):
     def __init__(self, name, forecast,endpoint,df=None):
         self.name = name
         self.forecast=forecast
