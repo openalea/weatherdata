@@ -249,6 +249,7 @@ class WeatherDataSource(object):
             stations={_get_id(feature): _get_properties(feature) for feature in features}
         df = pandas.DataFrame(stations).T
         return df
+
     def data(self,
              parameters =None,
              stationId =None,

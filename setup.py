@@ -58,4 +58,9 @@ setup(
 
     # See MANIFEST.in
     include_package_data=True,
+
+    entry_points = {
+       "wralea": ["weatherdata = weatherdata.wralea",
+                  "ipmdecisions = weatherdata.ipmwralea"]},    
+
     )
