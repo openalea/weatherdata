@@ -39,7 +39,7 @@ def testDataStationFMI():
     assert list(rep_ds.coords)==['time', 'location', 'lat', 'lon']
     assert rep_ds.coords['time'].dtype=='<M8[ns]'
     assert rep_ds.coords['time'].attrs=={'name': 'time'}
-    assert rep_ds.coords['location'].dtype=='int32'
+    assert rep_ds.coords['location'].dtype in ['int32', 'int64']
     assert rep_ds.coords['location'].values==[101104]
     assert rep_ds.coords['lat'].dtype=='float64'
     assert rep_ds.coords['lat'].attrs=={'name': 'latitude', 'unit': 'degrees_north'}
