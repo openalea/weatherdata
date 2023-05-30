@@ -565,7 +565,8 @@ class WeatherDataSource(object):
         # ax.text(x=float(ds.isel(time=0).lon.values)-0.5,y=float(ds.isel(time=0).lat.values)-0.2,s=float(ds['3002'].isel(time=0).values),color="blue")
         
     def plot(self,ds=None,varname=None, location=None,resample=None,date=None):
-            
+        
+        mpl_res = None
         if resample:
             data=ds[varname].resample(time=resample).mean()
             
@@ -574,12 +575,12 @@ class WeatherDataSource(object):
             
         if location is not None:  
             data_loc= data.sel(location=location)
-            data_loc.plot.line(x="time")
+            mpl_res = data_loc.plot.line(x="time")
         else:
-            data.plot.line(x="time")
+            mpl_res = data.plot.line(x="time")
         
         # if date is not None:
         #     data_time = data.sel(time=date)
         #     plt.bar(x=data_time.location.astype("str"), height=data_time.values) 
-        
+        return mpl_res
     

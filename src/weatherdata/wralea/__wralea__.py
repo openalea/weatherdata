@@ -10,12 +10,15 @@ __url__ = 'https://github.com/H2020-IPM-openalea/weatherdata'
 
 __editable__ = 'True'
 __icon__ = 'icon_cloud.png'
-__alias__ = [""] # Aliases for compatibitity
+__alias__ = [] # Aliases for compatibitity
 
 __all__ = """
 WeatherHub
 resources
+WeatherSources
 WeatherStations
+WeatherData
+Plot
 """.split()
 
 WeatherHub = Factory(name='WeatherHub',
@@ -31,9 +34,27 @@ resources =  Factory(name='resources',
                  nodeclass='resources',
                  )
 
-WeatherStations =  Factory(name='WeatherStations',
+WeatherSources =  Factory(name='WeatherSources',
                  description='Select a weather provider',
                  category='Weather',
                  nodemodule='weatherdata.wralea.adaptw',
+                 nodeclass='WeatherSources',
+                 )
+
+WeatherStations =  Factory(name='WeatherStations',
+                 description='Get weather Stations',
+                 category='Weather',
+                 nodemodule='weatherdata.wralea.adaptw',
                  nodeclass='WeatherStations',
+                 )
+WeatherData =  Factory(name='WeatherData',
+                 category='Weather',
+                 nodemodule='weatherdata.wralea.adaptw',
+                 nodeclass='weather_data',
+                 )
+
+Plot =  Factory(name='Plot',
+                 category='Weather',
+                 nodemodule='weatherdata.wralea.adaptw',
+                 nodeclass='plot',
                  )
