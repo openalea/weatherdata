@@ -34,9 +34,9 @@ dynamic = ["version"]
 description = 'Python data structure for handling weather data in OpenAlea.'
 readme = "README.md"
 authors = [
-    { name = "Christophe Pradal", email = "christophe.pradal@cirad.fr" }
-    { name = "Christian Fournier", email = "christian.fournier@inrae.fr" }
-    { name = "Marc Labadie",  }
+    { name = "Christophe Pradal", email = "christophe.pradal@cirad.fr" },
+    { name = "Christian Fournier", email = "christian.fournier@inrae.fr" },
+    { name = "Marc Labadie" }
 ]
 license = "CECILL-C"
 license-files = ["LICEN[CS]E*"]
@@ -57,7 +57,6 @@ dependencies = [
     "numpy",
     "xarray",
     "pint",
-    "matplotlib-base",
 ]
 
 [project.urls]
