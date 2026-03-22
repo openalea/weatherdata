@@ -96,7 +96,8 @@ dependencies = [
   "pint",
   "matplotlib-base",
   "openalea.core",
-  "cartopy"
+  "cartopy",
+  "openalea.agroservices",
 ]
 
 
