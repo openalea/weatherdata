@@ -103,7 +103,7 @@ dependencies = [
 
 [tool.setuptools.packages.find]
 where = ["src"]
-#namespaces = true
+namespaces = true
 
 [tool.setuptools.package-data]
 "*" = ["*.mtg", "*.drf", "*.txt"]

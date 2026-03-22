@@ -23,7 +23,7 @@ import cartopy.feature as cfea
 from openalea.agroservices.ipm.ipm import IPM
 import openalea.agroservices.ipm.fakers as fakers
 
-from weatherdata.settings import pathCache
+from .settings import pathCache
 
 logging.basicConfig(format='%(levelname)s:%(message)s',level=logging.INFO)
 
