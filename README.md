@@ -34,12 +34,13 @@ conda activate weatherdata
 * matplotlib
 * cartopy
 * metpy
-* agroservices
+* openalea.agroservices
 * jupyter
+* pint 
 
 ## Documentation
 
-You can see the complete documentation with tutorials at: xxx
+You can see the complete documentation with tutorialsin example directory.
 
 ## Contributing
 All contributions, bug reports, bug fixes, documentation improvements, enhancements, and ideas are welcome.
@@ -48,6 +49,6 @@ A detailed overview on how to contribute can be found in the [contributing guide
 
 ### Contributors
 
-<a href="https://github.com/H2020-IPM-openalea/weatherdata/graphs/contributors">
-  <img src="https://contrib.rocks/image?repo=H2020-IPM-openalea/weatherdata" />
+<a href="https://github.com/openalea/weatherdata/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=openalea/weatherdata" />
 </a>
