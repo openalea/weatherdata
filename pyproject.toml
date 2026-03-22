@@ -29,7 +29,7 @@ version_scheme = "guess-next-dev"
 local_scheme = "no-local-version"
 
 [project]
-name = "weatherdata"
+name = "openalea.weatherdata"
 dynamic = ["version"]
 description = 'Python data structure for handling weather data in OpenAlea.'
 readme = "README.md"
