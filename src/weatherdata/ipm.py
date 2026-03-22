@@ -20,8 +20,8 @@ import matplotlib.pyplot as plt
 import cartopy.crs as ccrs
 import cartopy.feature as cfea
 
-from agroservices.ipm.ipm import IPM
-import agroservices.ipm.fakers as fakers
+from openalea.agroservices.ipm.ipm import IPM
+import openalea.agroservices.ipm.fakers as fakers
 
 from weatherdata.settings import pathCache
 
