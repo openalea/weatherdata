@@ -63,8 +63,8 @@ dependencies = [
 Homepage = "http://github.com/openalea/weatherdata"
 
 [project.entry-points."wralea"]
-"weatherdata" = "weatherdata.wralea"
-"weatherdata.demo" = "weatherdata.wralea.demo"
+"weatherdata" = "openalea.weatherdata.wralea"
+"weatherdata.demo" = "openalea.weatherdata.wralea.demo"
 
 
 [project.optional-dependencies]
