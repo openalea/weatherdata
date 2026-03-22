@@ -1,7 +1,7 @@
 import pandas
 import xarray
 import numpy
-from weatherdata.ipm import WeatherDataHub, WeatherDataSource
+from openalea.weatherdata.ipm import WeatherDataHub, WeatherDataSource
 
 wdh= WeatherDataHub()
 list_resources = wdh.__resources__.keys()
