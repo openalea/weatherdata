@@ -43,7 +43,7 @@ test:
     - {{ dep }}
     {% endfor %}
   imports:
-    - weatherdata
+    - openalea.weatherdata
   source_files:
     - test/**
 
