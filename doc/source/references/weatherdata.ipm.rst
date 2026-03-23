@@ -1,9 +1,9 @@
-.. currentmodule:: weatherdata.ipm
+.. currentmodule:: openalea.weatherdata.ipm
 
 Weatherdata IPM module
 ========================
 
-.. automodule:: weatherdata.ipm
+.. automodule:: openalea.weatherdata.ipm
     :members:
     :undoc-members:
     :inherited-members:

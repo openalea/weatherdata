@@ -4,7 +4,7 @@ import pandas as pd
 from metpy.units import units
 import matplotlib.pyplot as plt
 
-from agroservices.ipm.ipm import IPM
+from openalea.agroservices.ipm.ipm import IPM
 
 ipm = IPM()
 

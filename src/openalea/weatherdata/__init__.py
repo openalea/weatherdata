@@ -9,14 +9,11 @@
 # ==============================================================================
 
 
-import pkg_resources
-from .version import version as _version
-__version__ = _version
+from importlib.metadata import version as get_version, PackageNotFoundError
 try:
-    version = pkg_resources.require("weatherdata")[0].version
-    __version__ = version
-except:
-    version = __version__
+    __version__ = get_version("weatherdata")
+except PackageNotFoundError:
+    pass
 
 from . import ipm
 from .ipm import *

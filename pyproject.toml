@@ -1,0 +1,109 @@
+# -*- python -*-
+#
+#       Copyright INRIA - CIRAD - INRA
+#
+#       File author(s):
+#
+#       File contributor(s):
+#
+#       Distributed under the Cecill-C License.
+#       See accompanying file LICENSE.txt or copy at
+#           http://www.cecill.info/licences/Licence_CeCILL-C_V1-en.html
+#
+#       OpenAlea WebSite : http://github.com/openalea/weatherdata
+#
+# ==============================================================================
+[build-system]
+requires = [
+    "setuptools",
+    "wheel",
+    "setuptools_scm",
+  ]
+build-backend = "setuptools.build_meta"
+
+# enable dynamic versioning based on git tags
+[tool.setuptools_scm]
+# Format version to ease alignment with conda/meta.yaml tag-based versioning
+fallback_version = "1.2.1"
+version_scheme = "guess-next-dev"
+local_scheme = "no-local-version"
+
+[project]
+name = "openalea.weatherdata"
+dynamic = ["version"]
+description = 'Python data structure for handling weather data in OpenAlea.'
+readme = "README.md"
+authors = [
+    { name = "Christophe Pradal", email = "christophe.pradal@cirad.fr" },
+    { name = "Christian Fournier", email = "christian.fournier@inrae.fr" },
+    { name = "Marc Labadie" }
+]
+license = "CECILL-C"
+license-files = ["LICEN[CS]E*"]
+classifiers = [
+  "Intended Audience :: Science/Research",
+  "Intended Audience :: Developers",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Scientific/Engineering",
+]
+keywords = ["OpenAlea", "DSS", "weather"]
+
+dependencies = [
+    "pandas",
+    "numpy",
+    "xarray",
+    "pint",
+]
+
+[project.urls]
+Homepage = "http://github.com/openalea/weatherdata"
+
+[project.entry-points."wralea"]
+"weatherdata" = "openalea.weatherdata.wralea"
+"weatherdata.demo" = "openalea.weatherdata.wralea.demo"
+
+
+[project.optional-dependencies]
+test = [
+    "pytest",
+    "path",
+]
+doc = [
+  "sphinx-favicon",
+  "sphinx-rtd-theme",
+  "pydata-sphinx-theme",
+  "myst-parser",
+  "sphinx-favicon",
+  "nbsphinx",
+]
+
+# section specific to conda-only distributed package (not used by pip yet)
+# based on astk, used in hydroroot with a meta.yaml that only use metadata from
+# pyproject => only pyproject.toml must be modified
+[tool.conda.environment]
+channels = [
+  "openalea3",
+  "conda-forge"
+]
+dependencies = [
+  "pandas",
+  "numpy",
+  "xarray",
+  "pint",
+  "matplotlib-base",
+  "openalea.core",
+  "cartopy",
+  "openalea.agroservices",
+]
+
+
+[tool.setuptools.packages.find]
+where = ["src"]
+namespaces = true
+
+[tool.setuptools.package-data]
+"*" = ["*.mtg", "*.drf", "*.txt"]

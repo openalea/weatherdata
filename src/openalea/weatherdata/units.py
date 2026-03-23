@@ -4,8 +4,6 @@ Units module of weather data derived from pint library to manage units
 
 import numpy as np
 import pint
-import pint.unit
-import weatherdata
 
 
 # define registry see pint

@@ -1,5 +1,5 @@
 from openalea.core import *
-from weatherdata import WeatherDataHub
+from openalea.weatherdata import WeatherDataHub
 
 
 def WeatherHub():

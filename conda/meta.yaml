@@ -1,43 +1,57 @@
-{% set data = load_setup_py_data() %}
+{% set pyproject = load_file_data('../pyproject.toml', from_recipe_dir=True) %}
+{% set name = pyproject.get('project').get('name') %}
+{% set description = pyproject.get('project').get('description') %}
+{% set version = environ.get('SETUPTOOLS_SCM_PRETEND_VERSION', "1.2.0.dev") %}
+{% set license = pyproject.get('project').get('license') %}
+{% set home = pyproject.get('project', {}).get('urls', {}).get('Homepage', '') %}
+{% set build_deps = pyproject.get("build-system", {}).get("requires", []) %}
+{% set deps = pyproject.get('project', {}).get('dependencies', []) %}
+{% set conda_deps = pyproject.get('tool', {}).get('conda', {}).get('environment', {}).get('dependencies',[]) %}
+{% set test_deps = pyproject.get('project', {}).get('optional-dependencies', {}).get('test',[]) %}
+
 
 package:
-  name: weatherdata
-  version: {{ data.get('version') }}
+  name: {{ name }}
+  version: {{ version }}
 
 source:
   path: ..
 
 build:
   noarch: python
-  preserve_egg_dir: True
   number: 0
-  script: {{PYTHON}} setup.py install 
+  preserve_egg_dir: True
+  script:
+    - {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-build-isolation -vv
 
 requirements:
-  build:
-    - python {{PY_VER}}
-    - setuptools
+  host:
+    - python
+    {% for dep in build_deps %}
+    - {{ dep }}
+    {% endfor  %}
+
   run:
-    - python >=3.6
-    - agroservices 
-    - pandas
-    - numpy
-    - xarray 
-    - jupyter
-    - cartopy
+    - python
+    {% for dep in deps + conda_deps %}
+    - {{ dep }}
+    {% endfor %}
   
 test:
   requires:
-    - pytest
+    {% for dep in test_deps %}
+    - {{ dep }}
+    {% endfor %}
   imports:
-    - weatherdata
+    - openalea.weatherdata
   source_files:
     - test/**
-  #commands:
-  #  - cd test
-  #  - pytest -v --ignore=test_weatherdata.py
-about:
-  home: {{ data.get('url') }}
-  license: GPL-v3
-  summary: {{ data.get('description') }}
 
+about:
+  home: {{ home }}
+  summary: {{ description }}
+  license: {{ license }}
+
+extra:
+  recipe-maintainers:
+    - pradal

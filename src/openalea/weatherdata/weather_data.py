@@ -11,7 +11,7 @@ wrappers = {'ipm_decision': 'openalea.weatherdata.wrapper.ipm_decision',
 #         print('wrapper not found' + wrapper)
 #         continue
 
-import openalea.weatherdata.wrapper.ipm_decision as ipm_decision
+import .wrapper.ipm_decision as ipm_decision
 
 
 class WeatherData(object):

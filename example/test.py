@@ -1,4 +1,4 @@
-from weatherdata import WeatherDataHub
+from openalea.weatherdata import WeatherDataHub
 hub = WeatherDataHub()
 lmt = hub.get_ressource(name='no.nibio.lmt')
 stations = lmt.stations

@@ -11,4 +11,4 @@ parameters available for the algorithms.
 
 .. toctree::
 
-    weatherdata.ipm.rst
+    openalea.weatherdata.ipm.rst
