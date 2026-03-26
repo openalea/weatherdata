@@ -337,7 +337,7 @@ class WeatherDataSource(object):
         else:          
             times=pandas.date_range(start=responses[0]["timeStart"],
                                     end=responses[0]["timeEnd"],
-                                    freq=str(responses[0]["interval"])+"S",
+                                    freq=str(responses[0]["interval"])+"s",
                                     name="time")
             
             #times.strftime('%Y-%m-%dT%H:%M:%S')
@@ -373,7 +373,7 @@ class WeatherDataSource(object):
             list_ds=[xr.Dataset(data_vars[el], coords=coords[el]) for el in range(len(responses))]
             
             #merge ds
-            ds=xr.merge(list_ds)
+            ds=xr.merge(list_ds, join='outer', compat='no_conflicts')
             
             #add coordinates attributes
             if stationId:

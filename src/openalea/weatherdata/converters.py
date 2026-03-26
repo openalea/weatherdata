@@ -7,7 +7,7 @@ import numpy as np
 def weather_data_as_xarray(weather_data):
     times = pandas.date_range(start=weather_data["timeStart"],
                               end=weather_data["timeEnd"],
-                              freq=str(weather_data["interval"]) + "S",
+                              freq=str(weather_data["interval"]) + "s",
                               name="time")
 
     datas = [np.array(weather_data['locationWeatherData'][0]['data']).astype("float")]
